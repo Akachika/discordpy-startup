@@ -34,5 +34,6 @@ async def ping(ctx):
 
 @bot.command()
 async def date(ctx):
-    await ctx.send(datetime.date)
+    temp = datetime.date
+    await ctx.send(temp)
 bot.run(token)
