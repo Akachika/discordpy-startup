@@ -28,8 +28,12 @@ async def date(ctx):
 async def cid(ctx):
     category_id = ctx.channel.category_id
     await ctx.send(category_id)
+
+@bot.command()
+async def mkch(ctx):
+    category_id = ctx.channel.category_id
     category = ctx.guild.get_channel(category_id)
-    now = datetime.now().strftime('%m/%d')
+    now = datetime.now().strftime('%m月%d日')
     new_channel = await category.create_text_channel(name=now)
     reply = f'{new_channel.mention} を作成しました'
     await ctx.send(reply)
