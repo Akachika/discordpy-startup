@@ -36,6 +36,7 @@ async def ping(ctx):
 async def date(ctx):
     now = datetime.now().strftime('%m/%d')
     await ctx.send(now)
+    await ctx.send('hogehoge')
 
 @bot.command()
 async def c_id(ctx):
