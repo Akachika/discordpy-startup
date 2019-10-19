@@ -36,4 +36,11 @@ async def ping(ctx):
 async def date(ctx):
     now = datetime.now().strftime('%m/%d')
     await ctx.send(now)
+
+@bot.command()
+async def c_id(ctx):
+    category_id = bot.channel.category_id
+    await ctx.send(category_id)
+    await ctx.send('hogehoge')
+
 bot.run(token)
