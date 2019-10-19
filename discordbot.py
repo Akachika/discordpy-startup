@@ -28,7 +28,7 @@ async def date(ctx):
 @bot.command()
 async def cid(ctx):
     await ctx.send('hogehoge')
-    category_id = ctx.command.channel.category_id
+    category_id = ctx.channel.category_id
     await ctx.send(category_id)
     
 
