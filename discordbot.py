@@ -13,12 +13,6 @@ client = discord.Client()
 async def on_command_error(ctx, error):
     await ctx.send(str(error))
 
-@client.event
-async def on_message(message):
-    if client.user in message.mentions: # 話しかけられたかの判定
-       if message.content.startswith('/date'):
-        reply = datetime.date
-        await message.channel.send(reply)
 
 @client.event
 async def on_message(message):
@@ -38,4 +32,7 @@ async def ping(ctx):
    
 
 
+@bot.command()
+async def date(ctx):
+    await ctx.send(datetime.date)
 bot.run(token)
