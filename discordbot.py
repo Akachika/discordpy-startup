@@ -12,7 +12,15 @@ client = discord.Client()
 @client.event
 async def on_command_error(ctx, error):
     await ctx.send(str(error))
-
+    
+@client.event
+async def on_message(message):
+    if message.content.startswith('/mkch'):
+        category_id = message.channel.category_id
+        category = message.guild.get_channel(category_id)
+        new_channel = await category.create_text_channel(name='new')
+        reply = f'{new_channel.mention} を作成しました'
+        await message.channel.send(reply)
 
 @client.event
 async def on_message(message):
@@ -40,8 +48,9 @@ async def date(ctx):
 
 @bot.command()
 async def c_id(ctx):
+    await ctx.send('hogehoge')
     category_id = bot.channel.category_id
     await ctx.send(category_id)
-    await ctx.send('hogehoge')
+    
 
 bot.run(token)
