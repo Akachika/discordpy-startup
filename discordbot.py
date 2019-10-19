@@ -32,6 +32,6 @@ async def cid(ctx):
     now = datetime.now().strftime('%m/%d')
     new_channel = await category.create_text_channel(name=now)
     reply = f'{new_channel.mention} を作成しました'
-    await message.channel.send(reply)
+    await ctx.send(reply)
 
 bot.run(token)
