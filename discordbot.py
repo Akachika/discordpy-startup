@@ -23,13 +23,15 @@ async def ping(ctx):
 async def date(ctx):
     now = datetime.now().strftime('%m/%d')
     await ctx.send(now)
-    await ctx.send('hogehoge')
 
 @bot.command()
 async def cid(ctx):
-    await ctx.send('hogehoge')
     category_id = ctx.channel.category_id
     await ctx.send(category_id)
-    
+    category = ctx.guild.get_channel(category_id)
+    now = datetime.now().strftime('%m/%d')
+    new_channel = await category.create_text_channel(name=now)
+    reply = f'{new_channel.mention} を作成しました'
+    await message.channel.send(reply)
 
 bot.run(token)
