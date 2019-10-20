@@ -50,7 +50,7 @@ async def weekch(ctx):
     nowNum = datetime.datetime.now()
     for i in range(7):  
         nowNum += datetime.timedelta(days=1)
-        nowStr = datetime.datetime.now().strftime('%m月 %d日')
+        nnowStr = datetime.datetime.strftime(nowNum,'%m月%d日')
         await ctx.send(nowStr)
     await ctx.send(nowStr)
     ##    new_channel = await category.create_text_channel(name=now)
