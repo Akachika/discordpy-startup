@@ -25,7 +25,7 @@ async def date(ctx):
     await ctx.send(nowNum)
     nowStr = datetime.datetime.strftime(nowNum,'%m月%d日')
     await ctx.send(nowStr)
-    nowNum + datetime.timedelta(days=10)
+    nowNum += datetime.timedelta(days=10)
     nowStr = datetime.datetime.strftime(nowNum,'%m月%d日')
     await ctx.send(nowStr)
 
@@ -48,11 +48,12 @@ async def weekch(ctx):
     category_id = ctx.channel.category_id  ##634406237395746816 団体戦のカテゴリID
     category = ctx.guild.get_channel(category_id)
     for i in range(7):
-        now_num = datetime.datetime.now()
-        now_num.date += i
-        now = datetime.datetime.now().strftime('%m月 %d日')
-        new_channel = await category.create_text_channel(name=now)
-        reply = f'{new_channel.mention} を作成しました'
-    await ctx.send(reply)
+        nowNum = datetime.datetime.now()
+        nowNum.date += datetime.timedelta(days=1)
+        nowStr = datetime.datetime.now().strftime('%m月 %d日')
+        await ctx.send(nowStr)
+    ##    new_channel = await category.create_text_channel(name=now)
+    ##    reply = f'{new_channel.mention} を作成しました'
+    ##await ctx.send(reply)
    
 bot.run(token)
