@@ -21,8 +21,12 @@ async def ping(ctx):
 
 @bot.command()
 async def date(ctx):
-    now = datetime.now().strftime('%m/%d')
-    await ctx.send(now)
+    nowNum = datetime.now()
+    nowStr = datetime.strftime(nowNum,'%m月/%d日')
+    await ctx.send(nowStr)
+    nowNum.day += 1
+    nowStr = datetime.strftime(nowNum,'%m月/%d日')
+    await ctx.send(nowStr)
 
 @bot.command()
 async def cid(ctx):
@@ -43,7 +47,9 @@ async def weekch(ctx):
     category_id = ctx.channel.category_id  ##634406237395746816 団体戦のカテゴリID
     category = ctx.guild.get_channel(category_id)
     for i in range(7):
-        now = datetime.now().strftime('%m+i月%d+i日')
+        now_num = datetime.now()
+        now_num.date += i
+        now = datetime.now().strftime('%m月 %d日')
         new_channel = await category.create_text_channel(name=now)
         reply = f'{new_channel.mention} を作成しました'
     await ctx.send(reply)
