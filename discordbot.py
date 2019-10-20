@@ -24,7 +24,7 @@ async def date(ctx):
     nowNum = datetime.now()
     nowStr = datetime.strftime(nowNum,'%m月%d日')
     await ctx.send(nowStr)
-    nowNum.day + datetime.timedelta(days=10)
+    nowNum + datetime.timedelta(days=10)
     nowStr = datetime.strftime(nowNum,'%m月%d日')
     await ctx.send(nowStr)
 
