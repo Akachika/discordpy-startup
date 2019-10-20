@@ -48,7 +48,15 @@ async def weekch(ctx):
     category_id = ctx.channel.category_id  ##634406237395746816 団体戦のカテゴリID
     category = ctx.guild.get_channel(category_id)
     nowNum = datetime.datetime.now()
-    for i in range(7):  
+    weekday = nowNum.weekday()
+    if weekday < 5:
+        nowNum += datetime.timedelta(days=weekday)
+    elif weekday == 5:
+        nowNum += datetime.timedelta(days=2)
+    else:
+        nowNum += datetime.timedelta(days=1)
+    
+    for i in range(7):
         nowStr = datetime.datetime.strftime(nowNum,'%m月%d日')
         new_channel = await category.create_text_channel(name=nowStr)
         reply = f'{new_channel.mention} までを作成しました'
