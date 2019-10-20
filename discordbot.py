@@ -51,11 +51,13 @@ async def weekch(ctx):
     weekday = nowNum.weekday()
     if weekday < 5:
         nowNum += datetime.timedelta(days=weekday)
+        await ctx.send('今週のチャンネルを作成します')
     elif weekday == 5:
         nowNum += datetime.timedelta(days=2)
+        await ctx.send('次週のチャンネルを作成します')
     else:
         nowNum += datetime.timedelta(days=1)
-    
+        await ctx.send('次週のチャンネルを作成します')
     for i in range(7):
         nowStr = datetime.datetime.strftime(nowNum,'%m月%d日')
         new_channel = await category.create_text_channel(name=nowStr)
