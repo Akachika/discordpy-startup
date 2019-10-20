@@ -47,9 +47,9 @@ async def mkch(ctx):
 async def weekch(ctx):
     category_id = ctx.channel.category_id  ##634406237395746816 団体戦のカテゴリID
     category = ctx.guild.get_channel(category_id)
-    for i in range(7):
-        nowNum = datetime.datetime.now()
-        nowNum += datetime.timedelta(days=i)
+    nowNum = datetime.datetime.now()
+    for i in range(7):  
+        nowNum += datetime.timedelta(days=1)
         nowStr = datetime.datetime.now().strftime('%m月 %d日')
         await ctx.send(nowStr)
     await ctx.send(nowStr)
