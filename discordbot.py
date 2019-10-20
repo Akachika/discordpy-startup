@@ -51,6 +51,7 @@ async def weekch(ctx):
         nowNum = datetime.datetime.now()
         nowNum += datetime.timedelta(days=i)
         nowStr = datetime.datetime.now().strftime('%m月 %d日')
+        await ctx.send(nowStr)
     await ctx.send(nowStr)
     ##    new_channel = await category.create_text_channel(name=now)
     ##    reply = f'{new_channel.mention} を作成しました'
