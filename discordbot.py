@@ -31,7 +31,7 @@ async def cid(ctx):
 
 @bot.command()
 async def mkch(ctx):
-    category_id = 
+    category_id = ctx.channel.category_id
     category = ctx.guild.get_channel(category_id)
     now = datetime.now().strftime('%m月%d日')
     new_channel = await category.create_text_channel(name=now)
