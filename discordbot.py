@@ -31,11 +31,21 @@ async def cid(ctx):
 
 @bot.command()
 async def mkch(ctx):
-    category_id = ctx.channel.category_id
+    category_id = 
     category = ctx.guild.get_channel(category_id)
     now = datetime.now().strftime('%m月%d日')
     new_channel = await category.create_text_channel(name=now)
     reply = f'{new_channel.mention} を作成しました'
     await ctx.send(reply)
 
+@bot.command()
+async def weekch(ctx):
+    category_id = ctx.channel.category_id  ##634406237395746816 団体戦のカテゴリID
+    category = ctx.guild.get_channel(category_id)
+    for i in range(7):
+        now = datetime.now().strftime('%m+i月%d+i日')
+        new_channel = await category.create_text_channel(name=now)
+        reply = f'{new_channel.mention} を作成しました'
+    await ctx.send(reply)
+   
 bot.run(token)
