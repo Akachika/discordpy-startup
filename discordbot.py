@@ -21,7 +21,8 @@ async def ping(ctx):
 
 @bot.command()
 async def date(ctx):
-    nowNum = datetime.now()
+    nowNum = datetime.datetime.now()
+    await ctx.send('hogehoge')
     nowStr = datetime.strftime(nowNum,'%m月%d日')
     await ctx.send(nowStr)
     nowNum + datetime.timedelta(days=10)
