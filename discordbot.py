@@ -49,7 +49,7 @@ async def weekch(ctx):
     category = ctx.guild.get_channel(category_id)
     for i in range(7):
         nowNum = datetime.datetime.now()
-        nowNum.date += datetime.timedelta(days=i)
+        nowNum += datetime.timedelta(days=i)
         nowStr = datetime.datetime.now().strftime('%m月 %d日')
     await ctx.send(nowStr)
     ##    new_channel = await category.create_text_channel(name=now)
