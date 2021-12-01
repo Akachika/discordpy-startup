@@ -47,7 +47,7 @@ async def mkch(ctx):
 
 @bot.command()
 async def weekch(ctx):
-    category_id = ctx.channel.category_id  ##634406237395746816 団体戦のカテゴリID
+    category_id = ctx.channel.category_id  ##914751704535298058　日程調整のチャンネルID
     category = ctx.guild.get_channel(category_id)
     nowNum = datetime.datetime.now()
     weekday = nowNum.weekday()
@@ -67,5 +67,35 @@ async def weekch(ctx):
         nowNum += datetime.timedelta(days=1)
     await ctx.send(reply)
 
-   
+@bot.command()
+async def nxtweek(ctx, arg):
+    pollChannelId = '914751704535298058'　##日程調整のチャンネルID
+    pollChannel = ctx.guild.get_channel(pollChannelId)
+    nowNum = datetime.datetime.now()
+    weekday = nowNum.weekday()
+    
+    await ctx.send('開始します')
+
+    poll = '/poll question: 日程調整W'
+    poll += arg
+    await pollChannel.send(poll)
+
+    date = nowNum
+    if weekday < 5:
+        date += datetime.timedelta(days=weekday)
+        await pollChannel.send('今週の試合を設定をします')
+    elif weekday == 5:
+        date += datetime.timedelta(days=2)
+        await pollChannel.send('次週の試合を設定します')
+    else:
+        date += datetime.timedelta(days=1)
+        await pollChannel.send('次週の試合を設定します')
+    for i in range(7):
+        strDate = datetime.datetime.strftime(date,'%m月%d日(%a)')
+        await pollChannel.send(i, '%d:'+strDate)
+        date += datetime.timedelta(days=1)
+    await pollChannel.send(reply)
+
+   await ctx.send('終了します')
+
 bot.run(token)
