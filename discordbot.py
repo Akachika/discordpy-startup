@@ -31,8 +31,10 @@ async def date(ctx):
 
 @bot.command()
 async def cid(ctx):
-    category_id = ctx.channel.category_id
-    await ctx.send(category_id)
+    
+    await ctx.send(ctx.channel.category_id)
+    await ctx.send(ctx.channel.channel_id)
+
 
 @bot.command()
 async def mkch(ctx):
