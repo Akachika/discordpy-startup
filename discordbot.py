@@ -91,9 +91,8 @@ async def nxtweek(ctx, arg):
         Out = str(i) + strDate
         msg = await ctx.send(Out)
         
-        await msg.add_reaction('\N{HEAVY LARGE CIRCLE}')
-        await msg.add_reaction('\N{CROSS MARK}')
-        await msg.add_reaction('\N{QUESTION MARK}')
+        for reaction in ['\N{HEAVY LARGE CIRCLE}', '\N{CROSS MARK}', '\N{QUESTION MARK}']
+        await msg.add_reaction(reaction)
         date += datetime.timedelta(days=1)
 
 
