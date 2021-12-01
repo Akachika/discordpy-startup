@@ -90,10 +90,10 @@ async def nxtweek(ctx, arg):
         strDate = datetime.datetime.strftime(date,'. %m月%d日(%a)')
         Out = str(i+1) + strDate
         msg = await ctx.send(Out)
-        await msg.add_reaction('⭕')
+        await client.add_reaction(msg, "⭕")
         date += datetime.timedelta(days=1)
 
-    for reaction in ['⭕', '❌', '❓']:
-            await msg.add_reaction(reaction)
+    for reaction in ["⭕", "❌", "❓"]:
+        await client.add_reaction(msg, reaction)
 
 bot.run(token)
