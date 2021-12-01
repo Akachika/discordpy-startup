@@ -50,7 +50,7 @@ async def weekch(ctx):
     nowNum = datetime.datetime.now()
     weekday = nowNum.weekday()
     if weekday < 5:
-        nowNum += datetime.timedelta(days=weekday)
+        nowNum -= datetime.timedelta(days=weekday)
         await ctx.send('今週のチャンネルを作成します')
     elif weekday == 5:
         nowNum += datetime.timedelta(days=2)
@@ -72,15 +72,13 @@ async def nxtweek(ctx, arg):
     nowNum = datetime.datetime.now()
     weekday = nowNum.weekday()
     
-    await ctx.send('開始します')
-
     poll = '日程調整W'
     poll += arg
     await ctx.send(poll)
 
     date = nowNum
     if weekday < 5:
-        date += datetime.timedelta(days=weekday)
+        date -= datetime.timedelta(days=weekday)
         await ctx.send('今週の試合を設定をします')
     elif weekday == 5:
         date += datetime.timedelta(days=2)
@@ -89,9 +87,14 @@ async def nxtweek(ctx, arg):
         date += datetime.timedelta(days=1)
         await ctx.send('次週の試合を設定します')
     for i in range(7):
-        strDate = datetime.datetime.strftime(date,'%m月%d日(%a)')
-        await ctx.send(strDate)
+        strDate = datetime.datetime.strftime(date,':%m月%d日(%a)')
+        Out = str(i) + strDate
+        msg = await ctx.send(Out)
+        
+        await msg.add_reaction('\N{HEAVY LARGE CIRCLE}')
+        await msg.add_reaction('\N{CROSS MARK}')
+        await msg.add_reaction('\N{QUESTION MARK}')
         date += datetime.timedelta(days=1)
-    await ctx.send('終了します')
+
 
 bot.run(token)
