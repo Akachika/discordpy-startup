@@ -67,30 +67,30 @@ async def weekch(ctx):
 
 @bot.command()
 async def nxtweek(ctx, arg):
-    pollChannelId = '914751704535298058' ##日程調整のチャンネルID
-    pollChannel = ctx.guild.get_channel(pollChannelId)
+    ##pollChannelId = '914751704535298058' ##日程調整のチャンネルID
+    ##pollChannel = ctx.guild.get_channel(pollChannelId)
     nowNum = datetime.datetime.now()
     weekday = nowNum.weekday()
     
     await ctx.send('開始します')
 
-    poll = '/poll question: 日程調整W'
+    poll = '日程調整W'
     poll += arg
-    await pollChannel.send(poll)
+    await ctx.send(poll)
 
     date = nowNum
     if weekday < 5:
         date += datetime.timedelta(days=weekday)
-        await pollChannel.send('今週の試合を設定をします')
+        await ctx.send('今週の試合を設定をします')
     elif weekday == 5:
         date += datetime.timedelta(days=2)
-        await pollChannel.send('次週の試合を設定します')
+        await ctx.send('次週の試合を設定します')
     else:
         date += datetime.timedelta(days=1)
-        await pollChannel.send('次週の試合を設定します')
+        await ctx.send('次週の試合を設定します')
     for i in range(7):
         strDate = datetime.datetime.strftime(date,'%m月%d日(%a)')
-        await pollChannel.send(i, '%d:'+strDate)
+        await ctx.send(i, '%d:'+strDate)
         date += datetime.timedelta(days=1)
     await ctx.send('終了します')
 
