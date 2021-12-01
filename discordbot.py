@@ -87,11 +87,11 @@ async def nxtweek(ctx, arg):
         date += datetime.timedelta(days=1)
         await ctx.send('次週の試合を設定します')
     for i in range(7):
-        strDate = datetime.datetime.strftime(date,':%m月%d日(%a)')
-        Out = str(i) + strDate
+        strDate = datetime.datetime.strftime(date,'. %m月%d日(%a)')
+        Out = str(i+1) + strDate
         msg = await ctx.send(Out)
         
-        for reaction in ['\N{HEAVY LARGE CIRCLE}', '\N{CROSS MARK}', '\N{QUESTION MARK}']:
+        for reaction in ['⭕', '❌', '❓']:
             await msg.add_reaction(reaction)
         date += datetime.timedelta(days=1)
 
