@@ -90,7 +90,7 @@ async def nxtweek(ctx, arg):
         await ctx.send('次週の試合を設定します')
     for i in range(7):
         strDate = datetime.datetime.strftime(date,'%m月%d日(%a)')
-        await ctx.send(i, '%d:'+strDate)
+        await ctx.send(strDate)
         date += datetime.timedelta(days=1)
     await ctx.send('終了します')
 
