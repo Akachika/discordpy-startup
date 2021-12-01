@@ -31,7 +31,6 @@ async def date(ctx):
 
 @bot.command()
 async def cid(ctx):
-    category_id = ctx.channel.category_id
     await ctx.send(ctx.channel.category_id)
     await ctx.send(ctx.channel.id)
     await ctx.send('今回もモブでした')
@@ -41,9 +40,8 @@ async def mkch(ctx):
     category_id = ctx.channel.category_id
     category = ctx.guild.get_channel(category_id)
     now = datetime.datetime.now().strftime('%m月%d日')
-    new_channel = await category.create_text_channel(name=now)
-    reply = f'{new_channel.mention} を作成しました'
-    await ctx.send(reply)
+    await category.create_text_channel(name=now)
+ 
 
 @bot.command()
 async def weekch(ctx):
@@ -69,7 +67,7 @@ async def weekch(ctx):
 
 @bot.command()
 async def nxtweek(ctx, arg):
-    pollChannelId = '914751704535298058'　##日程調整のチャンネルID
+    pollChannelId = '914751704535298058' ##日程調整のチャンネルID
     pollChannel = ctx.guild.get_channel(pollChannelId)
     nowNum = datetime.datetime.now()
     weekday = nowNum.weekday()
@@ -94,8 +92,6 @@ async def nxtweek(ctx, arg):
         strDate = datetime.datetime.strftime(date,'%m月%d日(%a)')
         await pollChannel.send(i, '%d:'+strDate)
         date += datetime.timedelta(days=1)
-    await pollChannel.send(reply)
-
-   await ctx.send('終了します')
+    await ctx.send('終了します')
 
 bot.run(token)
